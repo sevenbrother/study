@@ -13,7 +13,8 @@
         <p>Age: {{ age }}</p>
         <!-- <a v-bind:href="website">百度一下</a> -->
         <a :href="website">百度一下</a> <!-- 缩写形式-->
-        <input type="text" v-bind:value="website">
+        <!-- <input type="text" v-bind:value="website"> -->
+        <input type="text" v-model="website">   <!-- 改变文本框的值即可改变website值 -->
         <p v-html="websiteTag"></p>
     </div>
     <script src="app.js"></script>
