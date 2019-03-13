@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        document.write("-123 is NaN: " + isNaN("-123") + "<br>");   //-123 is NaN: false
+        document.write("-123a is NaN: " + isNaN("-123a") + "<br>"); //-123a is NaN: true
+        document.write("NaN type = " + typeof(NaN) + "<br>");  //NaN type = number
+        
+        document.write("a123 parserInt = " + parseInt("a123") + "<br>");    //a123 parserInt = NaN; NaN(Not a Number)
+        document.write("123 parserInt = " + parseInt("123") + "<br>");  //123 parserInt = 123
+        document.write("0123 parserInt = " + parseInt("0123") + "<br>");    //0123 parserInt = 123
+        document.write("0x10 parserInt = " + parseInt("0x10") + "<br>");    //0x10 parserInt = 16
+        document.write("123abc123 parserInt = " + parseInt("123abc123") + "<br>");  //123abc123 parserInt = 123
+        document.write("123.45 parserInt = " + parseInt("123.45") + "<br>");    //123.45 parserInt = 123
+
+        document.write("123.45 parseFloat = " + parseFloat("123.45") + "<br>");   //123.45 parseFloat = 123.45
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

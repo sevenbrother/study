@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+            document.createElement("标签名")		创建新元素节点
+            elt.setAttribute("属性名", "属性值")	 设置属性
+            elt.appendChild(e)						添加元素到elt中最后的位置
+            elt.insertBefore(newNode, oldNode);	    添加到elt中，oldNode之前；elt必须是oldNode的直接父节点
+            elt.removeChild(child)					删除指定的子节点；elt必须是child的直接父节点
+        */
+
+        var num = 1;
+        function add() {
+            var inputNode = document.createElement("input");    //创建指定标签节点
+            inputNode.setAttribute("type", "text");
+            inputNode.setAttribute("value", "auto-add: " + num)
+            num++;
+
+            var bodyNode = document.getElementsByTagName("body")[0];
+            bodyNode.appendChild(inputNode);    //添加子节点
+        }
+
+        function addFile() {
+            // 创建节点
+            var trNode = document.createElement("tr");
+            var tdNode1 = document.createElement("td");
+            var tdNode2 = document.createElement("td");
+
+            tdNode1.innerHTML = "<input type='file' />";
+            tdNode2.innerHTML = "<a href='#' onclick='deleteFile(this)'>删除附件</a>";
+
+            // 组合节点
+            trNode.appendChild(tdNode1);
+            trNode.appendChild(tdNode2);
+
+            // 插入节点
+            var tbodyNode = document.getElementsByTagName("tbody")[0];  //浏览器会自动添tbody，因此tr的直接父节点是tbody
+            var addFileTrNode = document.getElementById("addFileTr");
+            tbodyNode.insertBefore(trNode, addFileTrNode);
+        }
+
+        function deleteFile(aNode) {
+            var tbodyNode = document.getElementsByTagName("tbody")[0];  //浏览器会自动添tbody，因此tr的直接父节点是tbody
+            var trNode = aNode.parentNode.parentNode;   //此处必须用关系寻找节点
+            tbodyNode.removeChild(trNode);  //删除节点
+        }
+    </script>
+</head>
+<body>
+    <input type="button" onclick="add()" value="添加" /><hr>
+    <table>
+        <tr>
+            <td><input type="file" /></td>
+            <td><a href="#" onclick="deleteFile(this)">删除附件</a></td>
+        </tr>
+        <tr id="addFileTr">
+            <td colspan="2"><input type="button" onclick="addFile()" value="添加附件"></td>
+        </tr>
+    </table>
+    <hr>
+</body>
+</html>

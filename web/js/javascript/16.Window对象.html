@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+            open(); 打开新窗口
+            close(); 关闭当前窗口
+            resizeTo(); 将窗口的大小更改为指定的宽度和高度
+            moveBy(); 相对于原来窗口的位置移动指定 x 和 y 偏移值
+            moveTo(); 将窗口左上角的屏幕位置移动到指定的 x 和 y 位置
+            setInterval(); 每经过指定毫秒值后计算一个表达式，即开启定时任务
+            clearInterval(); 根据一个任务的ID取消定时任务 
+            setTimeout();  经过指定毫秒值后执行代码
+
+            注意：使用window对象的任何属性和方法，都可省略window不写
+        */
+
+        function show() {
+            var urlArray = ["https://www.baidu.com", "https://cn.bing.com"];
+            for (var index = 0; index < urlArray.length; index++) {
+                window.open(urlArray[index], "_blank", "heigth=400px, width=400px, toolbar=no, location=no", true);
+            }
+        }
+
+        function small() {
+            window.resizeTo(300, 200);
+        }
+
+        function moveBy() {
+            window.moveBy(100, 100);
+        }
+
+        function moveTo() {
+            window.moveTo(100, 100);
+        }
+
+        function showBaiDu() {
+            window.open("https://www.baidu.com", "_blank", "heigth=400px, width=400px, toolbar=no, location=no", true);
+        }
+        var id = window.setInterval("showBaiDu()", 3000);    //每隔3s自动弹出个窗口
+
+        function stopShow() {
+            window.clearInterval(id);
+        }
+
+        function show() {
+            alert("Timeout!!!")
+        }
+        window.setTimeout("show()", 10000); //10s后执行一次代码
+    </script>
+</head>
+<body>
+    <input type="button" onclick="show()" value="弹出网页" />
+    <input type="button" onclick="small()" value="变小" />      <!-- ?不生效 -->
+    <input type="button" onclick="moveBy()" value="moveBy" />   <!-- ?不生效 -->
+    <input type="button" onclick="moveTo()" value="moveTo" />   <!-- ?不生效 -->
+    <input type="button" onclick="stopShow()" value="停止自动弹窗" />
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+        常用时间：
+            鼠标点击相关：
+                onclick 在用户用鼠标左键单击对象时触发。 
+                ondblclick 当用户双击对象时触发。 
+                onmousedown 按下鼠标按键。 
+                onmouseup 释放鼠标按键。 
+
+            鼠标移动相关：
+                onmousemove 当用户将鼠标划过对象时触发。     
+                onmouseout  当用户将鼠标指针移出对象边界时触发。 
+
+            焦点相关的：
+                onblur 在对象失去输入焦点时触发。 
+                onfocus 当对象获得焦点时触发。
+
+            其他：
+                onchange 当对象或选中区的内容改变时触发。 
+                onload 在浏览器完成对象的装载后立即触发。 
+                onsubmit 当表单将要被提交时触发。如果表单提交时候触发的方法返回是false,那么该表单不允许提交，如果返回的是true允许提交 
+        */
+
+        function cilckTest() {
+            alert("单击");
+        }
+        function dblcilckTest() {
+            alert("双击");
+        }
+
+        function showTime() {
+            var timeObj = document.getElementById("timeSpan");
+            var date = new Date().toLocaleString();
+            timeObj.innerHTML = date;
+        }
+        function hideTime() {
+            var timeObj = document.getElementById("timeSpan");
+            timeObj.innerHTML = "";
+        }
+
+        function showInfo() {
+            var infoObj = document.getElementById("username");
+            infoObj.innerHTML = "用户名长度至少为8位".fontcolor("GREEN");
+        }
+        function hideInfo() {
+            var infoObj = document.getElementById("username");
+            infoObj.innerHTML = "";
+        }
+
+        function change() {
+            alert("城市改变了。。。");
+        }
+    </script>
+</head>
+<body>
+    <input type="button" onclick="cilckTest()" value="请单击" />
+    <input type="button" ondblclick="dblcilckTest()" value="请双击" />
+    <br><span onmousemove="showTime()" onmouseout="hideTime()">查看当前系统时间：</span><span id="timeSpan"></span>
+    <br>用户名：<input type="text" onfocus="showInfo()" onblur="hideInfo()" /><span id="username"></span>
+    <br><select onchange="change()" name="" id="">
+        <option >广州</option>
+        <option >深圳</option>
+        <option >上海</option>
+    </select>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+            注册监听器方式：
+                1. 直接在html元素上注册
+                2. JS代码先找到对应的对象，再注册；推荐使用，js代码和html代码可分离
+        */
+        
+        // 方式1
+        function ready() {
+            alert("Body元素加载完毕！");
+        }
+    </script>
+</head>
+<!-- <body onload="ready()">
+    
+</body> -->
+<body id="body">
+    
+</body>
+<script>
+    // 方式2，放在body后面为了body先生成
+    var bodyNode = document.getElementById("body");
+    bodyNode.onload = function() {
+        document.write("Body元素加载完毕！<br>")
+    }
+</script>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+            一般查找节点方式：
+            1. document.getElementById() 根据ID查找
+            2. document.getElementsByName() 根据标签的name属性值获取对应的标签，返回数组
+            3. document.getElementsByTagName() 根据标签名获取所有的标签对象，返回数组
+        */
+         
+        //innerHTML适用于设置标签体的内容，value适用于设置标签的value属性值
+        function setText() {
+            var inputNode = document.getElementById("userName");
+            inputNode.value = "jack";
+        }
+
+        function showImage() {
+            var imgs = document.getElementsByTagName("img");
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].src = "./img/user.jpg";
+                imgs[i].width = 100;
+                imgs[i].height = 100;
+            }
+        }
+
+        function showDiv() {
+            var divs = document.getElementsByName("info");
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].innerHTML = "哈哈".fontcolor("RED");
+            }
+        }
+
+        function checkAll(checkItem) {
+            // var checkItem = document.getElementsByName("all")[0];
+            var goodsItems = document.getElementsByName("item");
+            for (var i = 0; i < goodsItems.length; i++) {
+                goodsItems[i].checked = checkItem.checked;
+            }
+        }
+
+        function getSum() {
+            var sum = 0;
+            var goodsItems = document.getElementsByName("item");
+            for (var i = 0; i < goodsItems.length; i++) {
+                if (goodsItems[i].checked) {
+                    sum += parseFloat(goodsItems[i].value);
+                }
+            }
+
+            var sumSpan = document.getElementById("sumid");
+            sumSpan.innerHTML = ("&yen" + sum + "元").fontcolor("RED");
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="userName" /><input type="button" onclick="setText()" value="设置文字" />
+    <hr>
+    <img src="" alt="img1">
+    <img src="" alt="img2">
+    <img src="" alt="img3">
+    <input type="button" onclick="showImage()" value="显示图片" >
+    <hr>
+    <div name="info"></div>
+    <div name="info"></div>
+    <div name="info"></div>
+    <input type="button" onclick="showDiv()" value="显示DIV" >
+    <hr>
+    <div>商品列表：</div>
+    <label ><input type="checkbox" name="item" value="1000" />笔记本电脑1000元<br></label>
+    <label ><input type="checkbox" name="item" value="2000" />笔记本电脑2000元<br></label>
+    <label ><input type="checkbox" name="item" value="3000" />笔记本电脑3000元<br></label>
+    <label ><input type="checkbox" name="item" value="4000" />笔记本电脑4000元<br></label>
+    <label ><input type="checkbox" name="item" value="5000" />笔记本电脑5000元<br></label>
+    <label ><input type="checkbox" name="item" value="6000" />笔记本电脑6000元<br></label>
+    <label ><input type="checkbox" name="all" onclick="checkAll(this)" />全选<br></label>
+    <input type="button" value="总金额：" onclick="getSum()" /><span id="sumid"></span>
+</body>
+</html>

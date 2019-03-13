@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        document.write("No use with statement<br>");
+        with(document) {    //with语句块中，无需对象名即可使用其属性或方法
+            write("Use with statement<br>");
+        }
+
+        function Person(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+        var p = new Person(111, "jack");
+        document.write("id = " + p.id + "<br>");
+        document.write("name = " + p.name + "<br>");
+        with(p) {
+            document.write("Use with statement: id = " + id + "<br>");
+            document.write("Use with statement: name = " + name + "<br>");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+        地址栏对象
+            href: 可用于设置或获取地址栏URL
+            reload(): 刷新当前页面
+        */
+
+        function showURL() {
+            alert(location.href);
+        }
+
+        function showBaidu() {
+            location.href = "https://www.baidu.com";
+        }
+        
+        function refrash() {
+            location.reload();
+        }
+        window.setInterval("refrash()", 5000);  //每隔5s刷新页面
+    </script>
+</head>
+<body>
+    <input type="button" onclick="showURL()" value="显示地址栏" />
+    <span onclick="showBaidu()">百度一下</span>
+</body>
+</html>

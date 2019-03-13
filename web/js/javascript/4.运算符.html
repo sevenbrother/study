@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /* + */
+        document.write((1 + true) + "<br>");    //2
+        document.write((1 + false) + "<br>");   //1
+        document.write((1 + "true") + "<br>");  //1true
+
+        /* / */
+        document.write((10 / 3) + "<br>");  //3.3333333333333335
+
+        /* > < */
+        document.write((10 > 3) + "<br>");  //true
+        document.write(("10" > "3") + "<br>");  //false
+        document.write((10 > "3") + "<br>");  //true, translate string to number first
+
+        document.write(((18 >= 18) ? "a" : "b") + "<br>");   //a
+
+        /* && || ! */
+        document.write((true && false) + "<br>");   //false
+        document.write((true || false) + "<br>");   //true
+        document.write((!true) + "<br>");   //false
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

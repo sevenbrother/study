@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /* 1. 使用无参函数创建对象 */
+        function Person() {
+        }
+
+        Person();  //调用方法
+        var p = new Person();  //创建对象
+
+        p.id = 100;
+        p.name = "jack";
+        p.say = function() {
+            alert("id = " + this.id + ", name = " + this.name);
+        }
+        document.write("id = " + p.id + ", name = " + p.name + "<br>")
+        p.say();    //调用函数
+
+
+        /* 2. 使用带参函数创建对象 */
+        function Human(id, name) {
+            this.id = id;
+            this.name = name;
+            this.say = function() {
+                alert("id = " + this.id + ", name = " + this.name);
+            }
+        }
+        var h = new Human(101, "rose")
+        document.write("id = " + h.id + ", name = " + h.name + "<br>")
+        h.say();    //调用函数
+
+        /* 3. 使用Object函数创建对象 */
+        var o = new Object();
+        o.id = 102;
+        o.name = "lili";
+        o.say = function() {
+            alert("id = " + this.id + ", name = " + this.name);
+        }
+        document.write("id = " + o.id + ", name = " + o.name + "<br>")
+        o.say();    //调用函数
+
+        /* 4. 使用字面量方式创建对象 */
+        var z = {
+            id: 103,
+            name: "keke",
+            say: function() {
+                alert("id = " + this.id + ", name = " + this.name);
+            }
+        }
+        document.write("id = " + z.id + ", name = " + z.name + "<br>")
+        z.say();    //调用函数
+    </script>
+
+    <!-- 引入JS -->
+    <script src="./js/ArrayTool.js"></script>
+    <!-- 调用JS -->
+    <script>
+        /* 使用JS文件中变量tool */
+        var array = new Array(12, 15, 9, 35, 4);
+        document.write("最大值：" + tool.getMaxValue(array) + "<br>");  //最大值：35
+        document.write("9的下标为：" + tool.getIndexByValue(array, 9) + "<br>");  //9的下标为：2
+
+        /* 使用JS文件中定义的方法构造对象 */
+        var arrayTool = new ArrayTool([1, 5, 8, 2, 15]);
+        document.write("最大值：" + arrayTool.getMaxValue() + "<br>");  //最大值：15
+        document.write("9的下标为：" + arrayTool.getIndexByValue(9) + "<br>");  //9的下标为：-1
+
+        /* 也可利用Prototype原型模式，详情见：15.Prototype原型属性.html */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

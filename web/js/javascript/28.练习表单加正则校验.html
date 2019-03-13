@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        #tableTitle {
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        function clearTipSpan(thisNode) {
+            var allNodes = thisNode.parentNode.childNodes;
+            for (var index in allNodes) {
+                var tempNode = allNodes[index];
+                if ("SPAN" == tempNode.nodeName && "tipSpan" == tempNode.className) {
+                    tempNode.innerHTML = "";
+                    break;
+                }
+            }
+        }
+
+        function clearAllTipSpan() {
+            clearTipSpan(document.getElementById("userId"));
+            clearTipSpan(document.getElementById("pwdId"));
+            clearTipSpan(document.getElementById("ensurePwdId"));
+            clearTipSpan(document.getElementById("emailId"));
+        }
+
+        function checkUser() {
+            var nameInputNode = document.getElementById("userId");
+            var nameStr = nameInputNode.value;
+            var nameTipSpanNode = document.getElementById("userSpanId");
+
+            /* 6-16位英文和数字和下划线，不能以数字和下划线开始 */
+            var nameReg = /^[a-z]\w{5,15}$/i;   //\w 匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]' 
+            var checkRes = nameReg.test(nameStr);
+            showCheckTip(checkRes, nameTipSpanNode)
+            return checkRes;
+        }
+
+        function checkPassword() {
+            var pwdStr = document.getElementById("pwdId").value;
+            var pwdTipSpanNode = document.getElementById("pwdSpanId");
+
+            /* 6-16位英文和数字和特殊字符 */
+            var pwdReg = /^[\w!@#$%^&*]{6,16}$/i;
+            var checkRes = pwdReg.test(pwdStr);
+            showCheckTip(checkRes, pwdTipSpanNode);
+            return checkRes;
+        }
+
+        function ensurePassword() {
+            var pwdStr = document.getElementById("pwdId").value;
+            var ensurePwdStr = document.getElementById("ensurePwdId").value;
+            var ensurePwdTipSpanNode = document.getElementById("ensurePwdSpanId");
+
+            var checkRes = (ensurePwdStr == pwdStr);
+            if ("" != ensurePwdStr) {
+                showCheckTip(checkRes, ensurePwdTipSpanNode);
+            }
+            return checkRes;
+        }
+
+        function checkEmail() {
+            var emailStr = document.getElementById("emailId").value;
+            var emailTipSpanNode = document.getElementById("emailSpanId");
+
+            var emailReg = /^[a-z0-9]\w*@[a-z0-9]+(\.[a-z]{2,3}){1,2}$/i; //\w 匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]' 
+            var checkRes = emailReg.test(emailStr);
+            showCheckTip(checkRes, emailTipSpanNode)
+            return checkRes;
+        }
+
+        function checkForm() {
+            var checkUserFlag = checkUser();
+            var checkPasswordFlag = checkPassword();
+            var ensurePasswordFlag = ensurePassword();
+            var checkEmailFlag = checkEmail();
+
+            return checkUserFlag && checkPasswordFlag && ensurePasswordFlag && checkEmailFlag;
+        }
+
+        function showCheckTip(checkRes, tipSpanNode) {
+            tipSpanNode.innerHTML = checkRes ? "验证通过".fontcolor("GREEN") : "验证失败".fontcolor("RED");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+<!-- 如果表单提交时候触发的方法返回是false,那么该表单不允许提交，如果返回的是true允许提交 -->
+<form action="./src/Success.html" method="GET" onsubmit="return checkForm()">
+    <table border="1px" width="50%" align="center" cellspacing="0px" cellpadding="3px">
+        <caption><font id="tableTitle">用户注册</font></caption>
+        <tr>
+            <td width="25%">姓名：</td>
+            <td>
+                <input type="text" name="userName" id="userId" onfocus="clearTipSpan(this)" onblur="checkUser()"/>
+                <span class="tipSpan" id="userSpanId"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="password" name="pwd" id="pwdId" onfocus="clearTipSpan(this)" onblur="checkPassword()"/>
+                <span class="tipSpan" id="pwdSpanId"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>确认密码：</td>
+            <td>
+                <input type="password" name="ensurePwd" id="ensurePwdId" onfocus="clearTipSpan(this)" onblur="ensurePassword()"/>
+                <span class="tipSpan" id="ensurePwdSpanId"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>邮箱：</td>
+            <td>
+                <input type="text" name="email" id="emailId" onfocus="clearTipSpan(this)" onblur="checkEmail()"/>
+                <span class="tipSpan" id="emailSpanId"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>性别：</td>
+            <td>
+                <input type="radio" name="gender" checked="true" value="male"/>男
+                <input type="radio" name="gender" value="female"/>女
+            </td>
+        </tr>
+        <tr>
+            <td>爱好：</td>
+            <td>
+                <label><input type="checkbox" name="hobby-eat"/>EAT</label>
+                <label><input type="checkbox" name="hobby-play"/>PLAY</label>
+                <label><input type="checkbox" name="hobby-sleep"/>SLEEP</label>
+                <span id="hobbySpanId"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>城市：</td>
+            <td>
+                <select name="city" id="cityId">
+                    <option value="">请选择</option>
+                    <option value="bj">北京</option>
+                    <option value="sh">上海</option>
+                    <option value="gz">广州</option>
+                    <option value="xa">西安</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>自我介绍：</td>
+            <td>
+                <textarea name="myInfo" id="myInfoId" cols="50" rows="5"></textarea>
+            </td>
+        </tr>
+        <tr align="center">
+            <td colspan="2"><input type="reset" onclick="clearAllTipSpan()"/>&nbsp;&nbsp;<input type="submit"/></td>
+        </tr>
+    </table>
+</form>
+</html>

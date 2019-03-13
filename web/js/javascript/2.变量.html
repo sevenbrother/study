@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var a = 123;
+        document.write("a = " + a + "; type = " + typeof(a) + "<br>");  //a = 123; type = number
+        a = "string"
+        document.write("a = " + a + "; type = " + typeof(a) + "<br>");  //a = string; type = string
+        a = true
+        document.write("a = " + a + "; type = " + typeof(a) + "<br>");  //a = true; type = boolean
+
+        document.write("b = undefined; type = " + typeof(b) + "<br>");  //b = undefined; type = undefined
+
+        var p = {   //使用字面量方式创建对象
+            id: 103,
+            name: "keke",
+            say: function() {
+                //do nothing
+            }
+        }
+        document.write("p type = " + typeof(p) + "<br>");  //p type = object
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

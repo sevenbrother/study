@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+            1. 形参不能加var
+            2. 函数没有返回值类型
+            3. 不支持函数重载，后定义的函数会覆盖前面同名函数
+            4. JS函数内部隐式维护了一个arguments数组对象，
+                给函数传递数据会先传递到arguments对象中，
+                然后再由arguments对象分配数据给形参。
+        */
+        function add(a, b) {    //
+            var sum = a + b;
+            document.write("sum = " + sum + "<br>");    //sum = 3
+            return sum;
+        }
+        var res = add(1, 2);  //调用函数
+        document.write("res = " + res + "<br>");    //res = 3
+
+
+        function add1() {
+            document.write("arguments legth = " + arguments.length + ", ");
+            for (var index in arguments) {
+                document.write("arguments[" + index + "]=" + arguments[index] + ", ");
+            }
+        }
+        document.write("res = " + add1(10, 21, 32) + "<br>");    //arguments legth = 3, arguments[0]=10, arguments[1]=21, arguments[2]=32, res = undefined
+    </script>
+
+
+    <script>
+        function showDay() {
+            // find input object
+            var inputObj = document.getElementById("month");
+            // get input data
+            var month = inputObj.value;
+
+            // 条件语句中数字与字符串比较，会先将字符串转为数字
+            if (1 == month || 3 == month || 5 == month || 7 == month || 8 == month || 10 == month || 12 == month) {
+                alert("if show:本月有31天");
+            } else if (4 == month || 6 == month || 9 == month || 11 == month) {
+                alert("if show:本月有30天");
+            } else if (2 == month) {
+                alert("if show:本月有28天");
+            } else {
+                alert("if show:月份输入错误");
+            }
+
+            month = parseInt(month);    // parse string to int
+            switch (month) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    alert("switch show:本月有31天");
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    alert("switch show:本月有30天");
+                    break;
+                case 2:
+                    alert("switch show:本月有28天");
+                    break;
+                default:
+                    alert("switch show:月份输入错误");
+                    break;  
+            }
+        }
+    </script>
+</head>
+<body>
+    月份:<input id="month" type="text" /><input type="button" value="查询" onclick="showDay()" />
+</body>
+</html>

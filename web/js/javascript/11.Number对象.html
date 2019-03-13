@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var num = 10;
+        var number = new Number(10);
+        document.write("十进制：" + num.toString() + "<br>");   //十进制：10
+        document.write("十进制：" + num.toString(10) + "<br>"); //十进制：10
+        document.write("二进制：" + num.toString(2) + "<br>");  //二进制：1010
+        document.write("八进制：" + num.toString(8) + "<br>");  //八进制：12
+        document.write("十六进制：" + num.toString(16) + "<br>");   //十六进制：a
+
+
+        var num2 = 3.141592654;
+        /* toFixed()方法保留小数位时，带有四舍五入功能 */
+        document.write("保留三位小数：" + num2.toFixed(3) + "<br>");   //保留三位小数：3.142
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

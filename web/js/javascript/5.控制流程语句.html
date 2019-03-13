@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /* if */
+        if (3 >= 2) { // good
+            document.write("good<br>");
+        } else {
+            document.write("bad<br>");
+        }
+
+        if (0) {    //0 is false
+            document.write("!0 is true<br>");
+        } else {
+            document.write("0 is false<br>");
+        }
+
+        if (!NaN) {    //NaN is false
+            document.write("NaN is false<br>");
+        }
+
+        if ("") {    //"" is false
+            document.write("!\"\" is true<br>");
+        } else {
+            document.write("\"\" is false<br>");
+        }
+
+        var a;
+        document.write("a type is " + typeof(a) + "<br>");
+        if (a) {    //undefined is false
+            document.write("!undefined is true<br>");
+        } else {
+            document.write("undefined is false<br>");
+        }
+
+
+        /* switch */
+        var language = "javascript";
+        var learned = "java";
+        switch(language) {  //javascript
+            case learned:
+                document.write("java<br>");
+                break;
+            case (1 > 0) ? "javascript" : "other":
+                document.write("javascript<br>");
+                break;
+            case "css":
+                document.write("css<br>");
+                break;
+            case "html":
+                document.write("css<br>");
+                break;
+            default:
+                document.write("other<br>");
+                break;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

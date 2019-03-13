@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        /* 产生验证码 */
+        function createCode(length) {
+            var datas = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+            
+            var str = "";
+            for (var i = 0; i < length; i++) {
+                //Math.random() range: [0.0-1.0)
+                var indexRandom = Math.floor(Math.random() * datas.length);
+                str += datas[indexRandom];
+            }
+            return str;
+        }
+
+        function show() {
+            var spanNode = document.getElementById("code");
+            spanNode.innerHTML = createCode(4);
+            spanNode.style.fontSize = "30px";
+            spanNode.style.color = "RED";
+            spanNode.style.backgroundColor = "GRAY";
+            spanNode.style.textDecoration = "line-through"; //设置删除线
+            spanNode.style.fontStyle = "oblique";   //字体倾斜
+        }
+    </script>
+</head>
+<body onload="show()">  <!-- body加载完毕后，初始化显示验证码 -->
+    <span id="code"></span><a href="#" onclick="show()">换张试试</a>
+</body>
+</html>

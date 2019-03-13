@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+            1. prototype是function的一个隐式必备属性
+            2. prototype的值是一个对象
+            3. 可任意修改函数的prototype属性的值
+            4. 一个对象会自动拥有prototype的所有成员属性和方法
+        */
+
+        /* 利用对象prototype给Array对象添加方法 */
+        Array.prototype.getMaxValue = function() {
+            var tempMax = this[0];  //this这里代表数组
+            for (var i = 1; i < this.length; i++) {
+                if (this[i] > tempMax) {
+                    tempMax = this[i];
+                }
+            }
+
+            return tempMax;
+        }
+        Array.prototype.getIndexByValue = function(value) {
+        for (var index in this) {
+            if (this[index] == value) {
+                return index;
+            }
+        }
+
+        return -1;
+    }
+
+        var array1 = new Array(12, 15, 9, 35, 4);
+        document.write("最大值：" + array1.getMaxValue() + "<br>");  //最大值：35
+        document.write("9的下标为：" + array1.getIndexByValue(9) + "<br>");  //9的下标为：2
+
+        var array2 = [1, 5, 8, 2, 15];
+        document.write("最大值：" + array2.getMaxValue() + "<br>");  //最大值：15
+        document.write("9的下标为：" + array2.getIndexByValue(9) + "<br>");  //9的下标为：-1
+    </script>
+
+    <script>
+        /* 利用对象prototype给String对象添加toCharArray和reverse方法 */
+        String.prototype.toCharArray = function() {
+            // var array = this.split("");
+            var array = new Array();
+            for (var index = 0; index < this.length; index++) {
+                array.push(this.charAt(index));
+            }
+
+            return array;
+        }
+        String.prototype.reverse = function() {
+            // var arr = this.toCharArray();
+            // arr.reverse();
+            // return arr.join("");
+
+            var reverseString = "";
+            for (var index = (this.length -1); index >= 0; index--) {
+                reverseString += this.charAt(index);
+            }
+
+            return reverseString;
+        }
+
+        var str = "hello";
+        var charArray = str.toCharArray();
+        document.write("数组元素：" + charArray.join("-") + "<br>");    //数组元素：h-e-l-l-o
+        var strReverse = str.reverse();
+        document.write(strReverse + "<br>") //olleh
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

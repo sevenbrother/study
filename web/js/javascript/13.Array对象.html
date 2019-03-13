@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /* JS中数组长度是可以动态发生变化的 */
+
+        /* 创建数组4种方式 */
+        var arr4 = [0, 1, 2, 3, 4];
+        document.write("数组长度：" + arr4.length + "<br>"); //数组长度：5
+        arr4[10] = 10;
+        document.write("数组长度：" + arr4.length + "<br>"); //数组长度：11
+
+        var arr1 = new Array();
+        document.write("数组长度：" + arr1.length + "<br>"); //数组长度：0
+        arr1[10] = 10;
+        document.write("数组长度：" + arr1.length + "<br>"); //数组长度：11
+
+        var arr2 = new Array(3);
+        document.write("数组长度：" + arr2.length + "<br>"); //数组长度：3
+        arr2[10] = 10;
+        document.write("数组长度：" + arr2.length + "<br>"); //数组长度：11
+
+        var arr3 = new Array(0, 1, 2, 3);
+        document.write("数组长度：" + arr3.length + "<br>"); //数组长度：4
+        arr3[10] = 10;
+        document.write("数组长度：" + arr3.length + "<br>"); //数组长度：11
+    </script>
+
+    <script>
+        var arr1 = [0, 1];
+        var arr2 = [2, 3, 4];
+
+        var arr3 = arr1.concat(arr2);   // 拼接数组arr1和arr2
+        for (var index in arr3) {
+            document.write("index = " + index + ", value = " + arr3[index] + "; ");
+            //index = 0, value = 0; index = 1, value = 1; index = 2, value = 2; index = 3, value = 3; index = 4, value = 4;
+        }
+        document.write("<br>");
+
+        /* 用指定字符串拼接数组元素 */
+        document.write("拼接数组元素：" + arr3.join("-") + "<br>");    //拼接数组元素：0-1-2-3-4
+
+        /* 移除数组最后一个元素，并返回该元素 */
+        document.write("移除数组最后一个元素：" + arr3.pop() + "; ");
+        for (var index in arr3) {
+            document.write("index = " + index + ", value = " + arr3[index] + "; ");
+            //移除数组最后一个元素：4; index = 0, value = 0; index = 1, value = 1; index = 2, value = 2; index = 3, value = 3; 
+        }
+        document.write("<br>");
+
+        /* 数组添加新元素，并返回新的数组长度 */
+        document.write("添加数组元素，新数组长度：" + arr3.push(10) + "; ");;
+        for (var index in arr3) {
+            document.write("index = " + index + ", value = " + arr3[index] + "; ");
+            //添加数组元素，新数组长度：5; index = 0, value = 0; index = 1, value = 1; index = 2, value = 2; index = 3, value = 3; index = 4, value = 10; 
+        }
+        document.write("<br>");
+
+        /* 翻转数组元素 */
+        arr3.reverse();
+        document.write("翻转数组元素：");;
+        for (var index in arr3) {
+            document.write("index = " + index + ", value = " + arr3[index] + "; ");
+            //翻转数组元素：index = 0, value = 10; index = 1, value = 3; index = 2, value = 2; index = 3, value = 1; index = 4, value = 0; 
+        }
+        document.write("<br>");
+
+        /* 移除数组中第一个元素，并返回该元素 */
+        document.write("移除数组第一个元素：" + arr3.shift() + "; ");
+        for (var index in arr3) {
+            document.write("index = " + index + ", value = " + arr3[index] + "; ");
+            //移除数组第一个元素：10; index = 0, value = 3; index = 1, value = 2; index = 2, value = 1; index = 3, value = 0; 
+        }
+        document.write("<br>");
+
+        /* 截取数组 */
+        subArr3 = arr3.slice(1, 2);    //参数：开始下标、结束下标（不包含该下标元素）
+        for (var index in subArr3) {
+            document.write("index = " + index + ", value = " + subArr3[index] + "; "); //index = 0, value = 2; 
+        }
+        document.write("<br>");
+
+        /* 排序 */
+        var arr4 = [18, 9, 5, 58, 99];
+        var sortArr4 = arr4.sort();
+        document.write("按字符串排序：");
+        for (var index in sortArr4) {
+            document.write(sortArr4[index] + "， "); //按字符串排序：18， 5， 58， 9， 99，  
+        }
+        document.write("<br>");
+
+        function sortNumber(num1, num2) {
+            return (num1 - num2);
+        }
+        var sortArr4 = arr4.sort(sortNumber);   //sort()方法中需传入排序方法
+        document.write("按指定规则排序：");
+        for (var index in sortArr4) {
+            document.write(sortArr4[index] + "， "); //按指定规则排序：5， 9， 18， 58， 99，  
+        }
+        document.write("<br>");
+
+        /* splice()方法，从一个数组中移除一个或多个元素，如果必要，在所移除元素的位置上插入新元素，返回所移除的元素 */
+        var arr5 = [0, 1, 2, 3, 4, 5];
+        var arr5Temp = arr5.splice(1, 2);   //参数：起始位置下标、长度
+        document.write("删除的元素：");
+        for (var index in arr5Temp) {
+            document.write(arr5Temp[index] + "， "); //删除的元素：1， 2，    
+        }
+        document.write("<br>");
+        document.write("删除后数组：");
+        for (var index in arr5) {
+            document.write(arr5[index] + "， "); //删除后数组：0， 3， 4， 5，   
+        }
+        document.write("<br>");
+
+        var arr5 = [0, 1, 2, 3, 4, 5];
+        arr5.splice(1, 2, 11, 12, 13);
+        document.write("删除数组元素，并在其位置插入指定元素：");
+        for (var index in arr5) {
+            document.write(arr5[index] + "， "); //删除数组元素，并在其位置插入指定元素：0， 11， 12， 13， 3， 4， 5，     
+        }
+        document.write("<br>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

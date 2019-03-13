@@ -1,0 +1,1 @@
+document.write("write by Test.js<br>");

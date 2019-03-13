@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var date = new Date(); //获取当前系统时间
+        document.write(date + "<br>");   //Mon Feb 25 2019 21:43:36 GMT+0800 (中国标准时间)
+        document.write("year: " + date.getFullYear()+ "<br>");  //year: 2019
+        document.write("month: " + (date.getMonth() + 1) + "<br>"); //month: 2, 月份默认从0开始，因此+1
+        document.write("day: " + date.getDate() + "<br>");   //day: 25
+        document.write("week: " + date.getDay() + "<br>");   //week: 1; 表示星期：0=Sunday 1=Monday ...
+        document.write("hour: " + date.getHours() + "<br>");    //hour: 21
+        document.write("minute: " + date.getMinutes() + "<br>");   //minute: 43
+        document.write("second: " + date.getSeconds() + "<br>");    //second: 36
+
+        document.write(date.toLocaleString() + "<br>");  //2019/2/25 下午9:43:36
+        // yyyy-MM-dd HH:mm:ss
+        document.write(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+            + "&nbsp;" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "<br>");
+    </script>
+</head>
+<body>
+    当前系统时间：<span id="time"></span>
+</body>
+<script>
+    // 该script标签需放在body后面，为了body中span先生成
+    function getCurrentTime() {
+        var date = new Date();
+        var timeInfo = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+            + "&nbsp;" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+
+        var spanObj = document.getElementById("time");
+        // 设置span标签体内容
+        spanObj.innerHTML = timeInfo.fontcolor("red");
+    }
+
+    getCurrentTime();   //第一次获取时间
+    window.setInterval("getCurrentTime()", 1000);   //后续利用定时方法获取时间，参数：方法名（字符串）、时间间隔（毫秒）
+</script>
+</html>
