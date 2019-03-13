@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+    <div id="vue-app">
+        <h1>Events</h1>
+        <!-- <button v-on:click="add(1)">加一岁</button> -->
+        <button @click="add(1)">加一岁</button> <!-- 缩写形式 -->
+        <button v-on:click="subtract(1)">减一岁</button>
+        <button v-on:dblclick="add(10)">双击加十岁</button>
+        <button v-on:dblclick="subtract(10)">双击减十岁</button>
+        <button v-on:click.once="add(1)">加一岁（只能使用一次）</button>
+        <p>My age is {{age}}</p>
+        <div id="canvas" v-on:mousemove="updateXY">
+            {{x}}, {{y}} -
+            <span v-on:mousemove.stop="">Stop Moving</span>
+            <!-- <span v-on:mousemove="stopMoving">Stop Moving</span> -->
+        </div>
+        <a v-on:click.prevent="alert" href="https://ww.baidu.com">百度一下</a>
+
+        <!--
+            事件修饰符：
+            .stop 阻止单击事件继续传播
+            .prevent 阻止重载页面
+            .capture
+            .self
+            .once 触发一次
+            .passive
+        -->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 

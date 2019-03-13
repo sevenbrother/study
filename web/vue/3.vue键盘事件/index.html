@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+    <div id="vue-app">
+        <h1>键盘 Events</h1>
+        <label >姓名:</label>
+        <!-- <input type="text" v-on:keyup="logName"> -->
+        <input type="text" v-on:keyup.enter="logName">  <!-- enter键触发 -->
+        <label >年龄:</label>
+        <!-- <input type="text" v-on:keyup="logAge"> -->
+        <input type="text" v-on:keyup.ctrl.enter="logAge">  <!-- ctrl+enter键触发 -->
+    </div>
+
+    <!--
+        键盘修饰符
+        .enter
+        .tab
+        .delete (捕获“删除”和“退格”键)
+        .esc
+        .space
+        .up
+        .down
+        .left
+        .right
+    -->
+    <script src="app.js"></script>
+</body>
+</html>

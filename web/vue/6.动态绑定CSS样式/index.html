@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+    <div id="vue-app">
+        <h1>动态 CSS Class</h1>
+        <h2>实例 1</h2>
+        <div v-on:click="changeColor = !changeColor" v-bind:class="{changeColorClass:changeColor}">
+            <span>Henry1</span>
+        </div>
+        <h2>实例 2</h2>
+        <button v-on:click="changeColor = !changeColor">Change Color</button>
+        <button v-on:click="changeLength = !changeLength">Change Length</button>
+        <div v-bind:class="compClasses">    <!-- 计算属性 -->
+            <span>Henry2</span>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

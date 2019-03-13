@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+    <div id="vue-app">
+        <h1>v-if 条件</h1>
+        <button v-on:click="error = !error">Toggle Error</button>
+        <button v-on:click="success = !success">Toggle Success</button>
+
+        <p v-if="error">网络连接错误：404</p>
+        <p v-else-if="success">网络连接成功：200</p>
+        <p v-else>哈哈</p>
+
+        <!-- 标签一直存在，利用display属性控制是否显示 -->
+        <p v-show="error">网络连接错误：404</p>
+        <p v-show="success">网络连接成功：200</p>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

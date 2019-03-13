@@ -1,0 +1,16 @@
+span {
+    background: red;
+    display: inline-block;
+    padding: 10px;
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+.changeColorClass span {
+    background: green;
+}
+
+.changeLengthClass span:after {
+    content: "length";
+    margin-left: 10px;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+    <!-- vue-app是根容器 -->
+    <div id="vue-app">
+        <h1>{{ greet("afternoon") }}</h1>
+        <p>Name: {{ name }}</p>
+        <p>Age: {{ age }}</p>
+        <!-- <a v-bind:href="website">百度一下</a> -->
+        <a :href="website">百度一下</a> <!-- 缩写形式-->
+        <input type="text" v-bind:value="website">
+        <p v-html="websiteTag"></p>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
